@@ -1,0 +1,7 @@
+.connexionSection {
+    margin: 40px 40px 70px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 500px;
+}
