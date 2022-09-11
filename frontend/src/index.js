@@ -1,13 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter as Router, Route, Routes  } from 'react-router-dom';
 import './style/index.css';
 import reportWebVitals from './reportWebVitals';
+import HomePage from './pages/HomePage';
 import ConnexionPage from './pages/ConnexionPage';
+import CreatePostPage from './pages/CreatePostPage';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ConnexionPage />
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<ConnexionPage />}/>
+        <Route path="/HomePage" element={<HomePage />}/>
+        <Route path="/CreatePostPage" element={ <CreatePostPage />}/>
+      </Routes>
+    </Router>
   </React.StrictMode>
 );
 
