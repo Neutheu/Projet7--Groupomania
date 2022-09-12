@@ -1,11 +1,11 @@
 import LoginBlock from "../connexionBlocks/LoginBlock";
-import SignInBlock from "../connexionBlocks/SignInBlock";
+import SignUpBlock from "../connexionBlocks/SignUpBlock";
 import '../../style/ConnexionSection.css'
 
 function ConnexionSection () {
     return <section className="connexionSection">
         <LoginBlock />
-        <SignInBlock />
+        <SignUpBlock />
     </section>
 }
 
