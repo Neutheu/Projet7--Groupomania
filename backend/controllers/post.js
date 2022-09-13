@@ -20,7 +20,7 @@ exports.displayAllPosts = (req, res, next) => {
 
 //Fonction permettant de créer et d'enregistrer un post dans la base de données
 exports.createPost = (req, res, next) => {
-  const postObject = JSON.parse(req.body.sauce);
+  const postObject = JSON.parse(req.body.post);
   delete postObject._id;
   delete postObject._userId;
   const post = new Post({

@@ -2,13 +2,10 @@ import '../../style/ConnexionBlock.css';
 import '../../style/buttons/SectionButton.css';
 import '../../style/ConnexionForms.css';
 import { useState } from 'react';
-import {useNavigate} from 'react-router-dom';
 
 
 
 function SignUpBlock () {
-
-    const naviguate = useNavigate()
 
     function postRequest () {
         fetch("http://localhost:4200/api/auth/signup", {
@@ -21,8 +18,11 @@ function SignUpBlock () {
             })
             .then((response) => { 
                 if (response.ok) {
-                    naviguate("/HomePage")
-                }  
+                    window.location.reload();
+                    alert("Inscription confirmée, vous pouvez désormais vous connecter")
+                } else {
+                    alert("Erreur : Adresse email déjà utilisée ou format incorrect")
+                } 
             })
             .catch ((error) => console.log(error))
     } 

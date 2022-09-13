@@ -6,7 +6,7 @@ import {useNavigate} from 'react-router-dom';
 
 
 function LoginBlock () {
-    const naviguate = useNavigate()
+    const naviguate = useNavigate();
 
     function postRequest () {
         fetch("http://localhost:4200/api/auth/login", {
@@ -17,10 +17,17 @@ function LoginBlock () {
             },
             body: JSON.stringify ({password, email} )
             })
-            .then((response) => { 
-                if (response.status === 200) {
-                    naviguate("/HomePage")
-                }  
+            .then(response => response.json())
+            .then(json => {
+                if (json.userId) {
+                    naviguate("/HomePage");
+                    let stockedUserId = JSON.stringify(json.userId);  
+                    localStorage.setItem("userId",stockedUserId);  
+                    let stockedToken = JSON.stringify(json.token);  
+                    localStorage.setItem("token",stockedToken); 
+                 } else {
+                     alert('Combinaison email / mot de passe incorrecte')
+                 } 
             })
             .catch ((error) => console.log(error))
     } 

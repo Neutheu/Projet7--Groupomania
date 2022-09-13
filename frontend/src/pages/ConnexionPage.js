@@ -1,10 +1,10 @@
-import ConnexionHeader from '../components/headers/ConnexionHeader';
 import Footer from '../components/Footer';
 import ConnexionSection from '../components/sections/ConnexionSection';
+import HomeAndCreatePostHeader from '../components/headers/HomeAndCreatePostHeader';
 
 function ConnexionPage () {
     return <div>
-        <ConnexionHeader />
+        <HomeAndCreatePostHeader />
         <ConnexionSection />
         <Footer />
     </div>

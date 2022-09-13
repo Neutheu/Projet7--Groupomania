@@ -1,11 +1,11 @@
-import AddPostHeader from '../components/headers/AddPostHeader';
+import HomeAndCreatePostHeader from '../components/headers/HomeAndCreatePostHeader';
 import CreatePostSection from '../components/sections/CreatePostSection';
 import Footer from '../components/Footer';
 
 
 function CreatePostPage () {
     return <div>
-        <AddPostHeader />
+        <HomeAndCreatePostHeader />
         <CreatePostSection />
         <Footer />
     </div>

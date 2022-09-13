@@ -1,11 +1,12 @@
-.homeHeader {
+.homeAndCreatePostHeader {
     border-bottom: 5px solid #FFD7D7 ;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.logoHomeHeader {
+.logoHeader {
     height: 140px;
     width: 280px
 }
+
