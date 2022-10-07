@@ -5,7 +5,7 @@ import { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 
 
-function LoginBlock () {
+function LoginSection () {
     const naviguate = useNavigate();
 
     function postRequest () {
@@ -20,7 +20,8 @@ function LoginBlock () {
             .then(response => response.json())
             .then(json => {
                 if (json.userId) {
-                    naviguate("/HomePage");
+                    naviguate("/");
+                    window.location.reload();
                     let stockedUserId = JSON.stringify(json.userId);  
                     localStorage.setItem("userId",stockedUserId);  
                     let stockedToken = JSON.stringify(json.token);  
@@ -52,4 +53,4 @@ function LoginBlock () {
     </div>
 }
 
-export default LoginBlock
+export default LoginSection

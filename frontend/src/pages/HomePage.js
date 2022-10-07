@@ -1,10 +1,10 @@
-import HomeAndCreatePostHeader from '../components/headers/HomeAndCreatePostHeader';
 import HomeSection from '../components/sections/HomeSection';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 function HomePage () {
     return <div>
-        <HomeAndCreatePostHeader/>
+        <Header/>
         <HomeSection/>
         <Footer/>
     </div>

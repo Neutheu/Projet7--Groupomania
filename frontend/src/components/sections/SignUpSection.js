@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 
 
-function SignUpBlock () {
+function SignUpSection () {
 
     function postRequest () {
         fetch("http://localhost:4200/api/auth/signup", {
@@ -47,4 +47,4 @@ function SignUpBlock () {
     </div>
 }
 
-export default SignUpBlock
+export default SignUpSection

@@ -10,3 +10,12 @@
     width: 280px
 }
 
+.leftButtons {
+    width: 33%;
+}
+
+.rightButtons {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+}

@@ -16,7 +16,8 @@ function CreatePostSection () {
 
         let stockedToken = localStorage.getItem("token");
     
-        let date = Date();
+        let localdate = new Date();
+        let date = localdate.toLocaleDateString()
 
         let usersLiked = [];
 
@@ -35,7 +36,7 @@ function CreatePostSection () {
             .then ( (response) => {
                 if (response.status===201) {
                     alert ("Votre poste a bien été publié")
-                    naviguate("/HomePage");
+                    naviguate("/");
                 }
             }
             )
@@ -47,7 +48,7 @@ function CreatePostSection () {
     let [postText, setInputTextlValue] = useState("");
     let [postImage, setInputImageValue] = useState("");
 
-    return <div className='createPostSection'>
+    return <section className='createPostSection'>
         <div className='inputCreatePost'>
             <h1 className='titleInput'>Texte :</h1>
             <textarea className='input'onChange={(event) => setInputTextlValue(event.target.value)}></textarea>
@@ -61,7 +62,7 @@ function CreatePostSection () {
         <button className='sectionButton publishButton' type='button' onClick={postRequest}>
             Publier
         </button>
-    </div>
+    </section>
 }
 
 export default CreatePostSection

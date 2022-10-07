@@ -2,11 +2,20 @@ import '../../style/buttons/HeaderButton.css';
 import {Link} from 'react-router-dom';
 
 function HomeButton () {
-    return <Link to="/HomePage">
-    <button className='headerButton' type="button" >
-        Voir les posts 
-    </button>
-</Link>
+    
+    let userId = localStorage.getItem('userId');
+
+    function connexionAlert () {
+        if (!userId) {
+            alert('Vous devez vous connecter')
+        }
+    }
+
+    return <Link to={userId ? "/" : "/Login"}>
+        <button className='headerButton' type="button" onClick={connexionAlert} >
+            Voir les posts 
+        </button>
+    </Link>
 }
 
 export default HomeButton

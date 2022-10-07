@@ -35,3 +35,8 @@
 .imgPost {
     width: 40%;
 }
+
+.newImageMessage {
+    font-size: small;
+    margin-top: 5px;
+}

@@ -1,13 +1,14 @@
 .likeButton {
-    width: 50%;
+    width: 10%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    color: #4E5166;
 }
 
 .likeButtonIcone {
-    color: #4E5166;
     font-size: 25px;
+    margin-right: 3px;
 }
 
 .likeButtonIcone:hover {
