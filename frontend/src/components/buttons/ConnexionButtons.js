@@ -4,6 +4,7 @@ import SignUpButton from "./SignUpButton";
 function ConnexionButtons () {
     return <div style={{
         display:'flex',
+        flexWrap: 'wrap',
         flexDirection: 'row',
         justifyContent: 'space-around',
     }}>

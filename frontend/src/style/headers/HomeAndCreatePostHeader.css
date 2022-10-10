@@ -1,13 +1,16 @@
 .homeAndCreatePostHeader {
     border-bottom: 5px solid #FFD7D7 ;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    height: fit-content;
 }
 
 .logoHeader {
     height: 140px;
-    width: 280px
+    width: 280px;
+    margin-bottom: -15%;
 }
 
 .leftButtons {
@@ -18,4 +21,10 @@
     width: 33%;
     display: flex;
     justify-content: center;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }

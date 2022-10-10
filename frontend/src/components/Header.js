@@ -11,14 +11,16 @@ function Header() {
     let userId = localStorage.getItem('userId');
 
 	return <header className='homeAndCreatePostHeader'>
-		<div className='leftButtons'>
-            <HomeButton />
-            <AddPostButton />   
-        </div>
-		<img src={logo} alt="logo Groupomania" className='logoHeader' />
-        <div className='rightButtons'>
-            {userId ? <LogoutButton /> : <ConnexionButtons />}
-        </div>
+        <div><img src={logo} alt="logo Groupomania" className='logoHeader' /></div>
+        <div className='buttons'>
+            <div className='leftButtons'>
+                <HomeButton />
+                <AddPostButton />   
+            </div>
+            <div className='rightButtons'>
+                {userId ? <LogoutButton /> : <ConnexionButtons />}
+            </div>
+        </div>	
 	</header>
 }
 
