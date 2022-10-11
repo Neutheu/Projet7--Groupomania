@@ -26,6 +26,8 @@ function LoginSection () {
                     localStorage.setItem("userId",stockedUserId);  
                     let stockedToken = JSON.stringify(json.token);  
                     localStorage.setItem("token",stockedToken); 
+                    let roleAdmin = JSON.stringify(json.admin);  
+                    localStorage.setItem("roleAdmin",roleAdmin); 
                  } else {
                      alert('Combinaison email / mot de passe incorrecte')
                  } 

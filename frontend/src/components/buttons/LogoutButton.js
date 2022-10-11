@@ -5,6 +5,7 @@ function LogoutButton () {
     function logout () {
         localStorage.removeItem('userId');
         localStorage.removeItem('token');
+        localStorage.removeItem('roleAdmin');
         window.location.reload();
     }
 

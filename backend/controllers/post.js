@@ -1,4 +1,5 @@
 const Post = require('../models/post');
+const User = require ('../models/user')
 const fs = require('fs');
 
 // Fonction permetttant d'afficher tous les posts
@@ -42,14 +43,26 @@ exports.modifyPost = (req, res, next) => {
     imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
   } : { ...JSON.parse(req.body.post) };
 
+   
   delete postObject._userId;
+
+  let admin;
+
+  User.findOne({_id: postObject.userId})
+    .then((user) => {
+      admin = user.roleAdmin
+    })
+    .catch(error => res.status(401).json({ error }));
+   
   Post.findOne({_id: postObject.postId})
     .then((post) => {
-      console.log(postObject);
-      if (post.userId == postObject.userId || postObject.userId === '634025f9f90aa77f3bb294da') {
-          Post.updateOne({ _id: postObject.postId}, { ...postObject, _id: postObject.postId})
-          .then(() => res.status(200).json({message : 'Post modifié!'}))
-          .catch(error => res.status(401).json({ error }));
+      if (admin === true) {
+        postObject.userId = post.userId
+      }
+      if (post.userId == postObject.userId || admin === true) {
+        Post.updateOne({ _id: postObject.postId}, { ...postObject, _id: postObject.postId})
+        .then(() => res.status(200).json({message : 'Post modifié!'}))
+        .catch(error => res.status(401).json({ error }));
       } else {
         res.status(403).json({ message : 'unauthorized request'});
       }
@@ -61,9 +74,18 @@ exports.modifyPost = (req, res, next) => {
 
 // Fonction permettant de supprimer un post
 exports.deletePost = (req, res, next) => {
+
+  let admin;
+
+  User.findOne({_id: req.body.userId})
+    .then((user) => {
+      admin = user.roleAdmin
+    })
+    .catch(error => res.status(401).json({ error }));
+   
   Post.findOne({ _id: req.body.postId})
     .then(post => {
-      if (post.userId == req.body.userId || req.body.userId === '634025f9f90aa77f3bb294da') {
+      if (post.userId == req.body.userId || admin === true) {
         const filename = post.imageUrl.split('/images/')[1];
         fs.unlink(`images/${filename}`, () => {
           Post.deleteOne({_id: req.body.postId})
@@ -85,15 +107,16 @@ exports.likePost = (req, res, next) => {
     .then(
       (post) => {
           if (post.usersLiked.includes(req.body.userId)) {
-            res.status(401).json({ message : 'Post déjà liké'});
+            post.usersLiked.splice(post.usersLiked.indexOf(req.body.userId),1)
+            post.likes--;
           } 
           else {
             post.usersLiked.push(req.body.userId);
             post.likes++;
-            post.save()
-              .then(() => { res.status(201).json({message: 'Post enregistré'})})
-              .catch(error => { res.status(400).json( { error })});
             }
+          post.save()
+          .then(() => { res.status(201).json({message: 'Post enregistré'})})
+          .catch(error => { res.status(400).json( { error })});
           })
               
       .catch(

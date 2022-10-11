@@ -18,10 +18,13 @@ import {useNavigate} from 'react-router-dom';
     let guillemetsUserId = localStorage.getItem("userId");
     let userId = guillemetsUserId.replace(/['"]+/g, '');
     let stockedToken = localStorage.getItem("token");
+    let roleAdmin = localStorage.getItem("roleAdmin");
+
+    console.log(roleAdmin)
 
     function modifyPost () {
 
-        if (userId.replace(/['"]+/g, '') == post.userId || userId == '634025f9f90aa77f3bb294da') {
+        if (userId.replace(/['"]+/g, '') == post.userId || roleAdmin === 'true') {
 
             let modifyPost = {
                 modifyPostText: post.postText,
@@ -103,6 +106,7 @@ import {useNavigate} from 'react-router-dom';
             </div>
         </div>
         <div className="homePostFooter">
+            {(post.userId === userId || roleAdmin === 'true') && 
             <div className="footerButtons">
                 <button className='sectionButton' type='button' onClick={modifyPost}>
                      Modifier
@@ -110,7 +114,8 @@ import {useNavigate} from 'react-router-dom';
                 <button className='sectionButton' type='button' onClick={deletePost}>
                     Supprimer
                 </button> 
-            </div>
+            </div>}
+            
             <div className='likeButton'>
                 <i class="fa-solid fa-thumbs-up likeButtonIcone" onClick={likePost}></i>
                 <div>{post.likes}</div>

@@ -19,6 +19,7 @@ function App () {
                     <Route exact path="/SignUp" element={<SignUpPage />}/>
                     <Route exact path="/Login" element={<LoginPage />}/>
                     <Route exact path="/CreatePostPage" element={userId ? <CreatePostPage/> : <LoginPage/>}/>
+                    <Route path="*" element={userId ? <HomePage/> : <LoginPage/>}/>
                 </Routes>
             </Router>
         </div> )
