@@ -20,8 +20,6 @@ import {useNavigate} from 'react-router-dom';
     let stockedToken = localStorage.getItem("token");
     let roleAdmin = localStorage.getItem("roleAdmin");
 
-    console.log(roleAdmin)
-
     function modifyPost () {
 
         if (userId.replace(/['"]+/g, '') == post.userId || roleAdmin === 'true') {
@@ -117,7 +115,7 @@ import {useNavigate} from 'react-router-dom';
             </div>}
             
             <div className='likeButton'>
-                <i class="fa-solid fa-thumbs-up likeButtonIcone" onClick={likePost}></i>
+                <i className="fa-solid fa-thumbs-up likeButtonIcone" onClick={likePost}></i>
                 <div>{post.likes}</div>
             </div>
         </div>
